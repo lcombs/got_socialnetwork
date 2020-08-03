@@ -7,7 +7,7 @@ library(igraph)
 library(anocva)
 set.seed(2020)
 
-#getwd()
+setwd('Documents/SocialNetworks/data')
 
 # read the marvel data
 nodes <- read.csv("got-nodes.csv", header=T, as.is=T)
