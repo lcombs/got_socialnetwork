@@ -196,6 +196,18 @@ legend(x=1, y=1, as.factor(V(net)$geography) %>% levels(), pch=21,
        col="black", pt.bg=colrs, pt.cex=1, bty="n", ncol=1, cex=0.8)
 text('geography', x = 1.1, y=1, cex = 1, col='black')
 
+
+# try with other layout - other layouts are not as easy distinguish as the default (layout_with_fr)
+# source: https://dshizuka.github.io/networkanalysis/03_plots.html
+
+set.seed(2020)
+layouts = c("layout_with_fr", "layout_with_kk", "layout_with_dh", "layout_with_gem", "layout_as_star", "layout_as_tree", "layout_in_circle", "layout_on_grid")
+par(mfrow=c(2,4), mar=c(1,1,1,1))
+for(layout in layouts){
+   l=do.call(layout, list(net))
+   plot(net, layout=l, edge.color="black", vertex.label=NA, main=layout)
+}
+
 # politics is murky in the center, but well defined at the outskirts
 unique(V(net)$politics) %>% length
 colrs <- c(rainbow(19))
